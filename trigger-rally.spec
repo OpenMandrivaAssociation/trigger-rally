@@ -22,7 +22,7 @@ BuildRequires: jam
 BuildRequires: SDL-devel
 BuildRequires: SDL_image-devel
 BuildRequires: freealut-devel
-BuildRequires: glew-devel mesagl-devel
+BuildRequires: glew-devel mesagl-devel mesaglut-devel mesaglu-devel
 BuildRequires: openal-devel
 BuildRequires: physfs-devel
 Requires: %{name}-data
