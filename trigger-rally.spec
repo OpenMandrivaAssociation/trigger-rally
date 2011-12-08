@@ -1,37 +1,34 @@
-%define oname trigger
-%define Summary Rally racing game
-%define name %{oname}-rally
-%define version 0.5.2.1
-%define release %mkrel 5
+%define	oname	trigger
 
-%define distname %{oname}-%{version}-src
-
-Summary: %{Summary}
-Name: %{name}
-Version: %{version}
-Release: %{release}
-Source0: http://downloads.sourceforge.net/trigger-rally/%{distname}.tar.bz2
-Source1: %{name}.png
-Patch0: trigger-0.5.2.1-nodoc.patch
-License: GPL
-Group: Games/Arcade
-Url: http://sourceforge.net/projects/trigger-rally/
-BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-buildroot
-BuildRequires: automake1.8
-BuildRequires: jam
-BuildRequires: SDL-devel
-BuildRequires: SDL_image-devel
-BuildRequires: freealut-devel
-BuildRequires: glew-devel mesagl-devel mesaglut-devel mesaglu-devel
-BuildRequires: openal-devel
-BuildRequires: physfs-devel
-Requires: %{name}-data
+Summary:	Rally racing game
+Name:		%{oname}-rally
+Version:	0.6.0
+Release:	%mkrel 1
+Source0:	http://downloads.sourceforge.net/trigger-rally/%{name}-%{version}-src.tar.bz2
+Source1:	%{name}.png
+Patch0:		trigger-0.5.2.1-nodoc.patch
+License:	GPLv2
+Group:		Games/Arcade
+Url:		http://sourceforge.net/projects/trigger-rally/
+BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
+BuildRequires:	automake1.8
+BuildRequires:	jam
+BuildRequires:	SDL-devel
+BuildRequires:	SDL_image-devel
+BuildRequires:	freealut-devel
+BuildRequires:	glew-devel
+BuildRequires:	mesagl-devel
+BuildRequires:	mesaglut-devel
+BuildRequires:	mesaglu-devel
+BuildRequires:	openal-devel
+BuildRequires:	physfs-devel
+Requires:	%{name}-data
 
 %description
 Trigger is a fast-paced open source rally racing game.
 
 %prep
-%setup -q -n %{distname}
+%setup -q -n %{name}-%{version}-src
 %patch0 -p1 -b .nodoc
 
 %build
@@ -47,7 +44,7 @@ rm -rf %{buildroot}%{_libdir}
 install -D -m 644 %{SOURCE1} %{buildroot}%{_datadir}/icons/%{name}.png
 
 install -d %{buildroot}%{_datadir}/applications
-cat > $RPM_BUILD_ROOT%{_datadir}/applications/mandriva-%{name}.desktop << EOF
+cat > %{buildroot}%{_datadir}/applications/mandriva-%{name}.desktop << EOF
 [Desktop Entry]
 Name=Trigger Rally
 Comment=%{Summary}
@@ -55,7 +52,7 @@ Exec=soundwrapper %{_gamesbindir}/%{oname}
 Icon=%{name}
 Terminal=false
 Type=Application
-Categories=Game;ArcadeGame;X-MandrivaLinux-MoreApplications-Games-Arcade;
+Categories=Game;ArcadeGame;
 EOF
 
 %clean
@@ -66,5 +63,4 @@ rm -rf %{buildroot}
 %{_gamesbindir}/%{oname}
 %{_datadir}/icons/%{name}.png
 %{_datadir}/applications/mandriva-%{name}.desktop
-
 
