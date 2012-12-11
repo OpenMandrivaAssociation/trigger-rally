@@ -10,16 +10,15 @@ Patch0:		trigger-0.5.2.1-nodoc.patch
 License:	GPLv2
 Group:		Games/Arcade
 Url:		http://sourceforge.net/projects/trigger-rally/
-BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 BuildRequires:	automake1.8
 BuildRequires:	jam
-BuildRequires:	SDL-devel
-BuildRequires:	SDL_image-devel
+BuildRequires:	pkgconfig(sdl)
+BuildRequires:	pkgconfig(SDL_image)
 BuildRequires:	freealut-devel
 BuildRequires:	glew-devel
 BuildRequires:	mesagl-devel
-BuildRequires:	mesaglut-devel
-BuildRequires:	mesaglu-devel
+BuildRequires:	pkgconfig(glut)
+BuildRequires:	pkgconfig(glu)
 BuildRequires:	openal-devel
 BuildRequires:	physfs-devel
 Requires:	%{name}-data
@@ -36,7 +35,6 @@ Trigger is a fast-paced open source rally racing game.
 jam
 
 %install
-rm -rf %{buildroot}
 DESTDIR=%{buildroot} jam install
 # only contains .a files
 rm -rf %{buildroot}%{_libdir}
@@ -55,12 +53,7 @@ Type=Application
 Categories=Game;ArcadeGame;
 EOF
 
-%clean
-rm -rf %{buildroot}
-
 %files
-%defattr(-,root,root)
 %{_gamesbindir}/%{oname}
 %{_datadir}/icons/%{name}.png
 %{_datadir}/applications/mandriva-%{name}.desktop
-
