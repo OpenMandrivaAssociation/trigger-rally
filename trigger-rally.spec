@@ -3,7 +3,7 @@
 Summary:	Rally racing game
 Name:		%{oname}-rally
 Version:	0.6.0
-Release:	%mkrel 1
+Release:	2
 Source0:	http://downloads.sourceforge.net/trigger-rally/%{name}-%{version}-src.tar.bz2
 Source1:	%{name}.png
 Patch0:		trigger-0.5.2.1-nodoc.patch
@@ -16,7 +16,7 @@ BuildRequires:	pkgconfig(sdl)
 BuildRequires:	pkgconfig(SDL_image)
 BuildRequires:	freealut-devel
 BuildRequires:	glew-devel
-BuildRequires:	mesagl-devel
+BuildRequires:	pkgconfig(gl)
 BuildRequires:	pkgconfig(glut)
 BuildRequires:	pkgconfig(glu)
 BuildRequires:	openal-devel
