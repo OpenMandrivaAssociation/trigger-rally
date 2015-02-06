@@ -3,7 +3,7 @@
 Summary:	Rally racing game
 Name:		%{oname}-rally
 Version:	0.6.0
-Release:	2
+Release:	3
 Source0:	http://downloads.sourceforge.net/trigger-rally/%{name}-%{version}-src.tar.bz2
 Source1:	%{name}.png
 Patch0:		trigger-0.5.2.1-nodoc.patch
