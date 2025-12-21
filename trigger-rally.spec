@@ -10,6 +10,9 @@ Patch0:		trigger-0.5.2.1-nodoc.patch
 License:	GPLv2
 Group:		Games/Arcade
 Url:		https://sourceforge.net/projects/trigger-rally/
+BuildRequires:	autoconf
+BuildRequires:	libtool-base
+BuildRequires:	slibtool
 BuildRequires:	automake1.8
 BuildRequires:	jam
 BuildRequires:	pkgconfig(sdl)
